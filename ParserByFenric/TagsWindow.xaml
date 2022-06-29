@@ -1,0 +1,52 @@
+﻿<Window x:Class="ParserByFenric.TagsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ParserByFenric"
+        mc:Ignorable="d"
+        Title="TagsWindow" Height="450" Width="800" MinWidth="600" MinHeight="200" Closing="Window_Closing" Closed="Window_Closed">
+    <Grid>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Начать заново" Click="New"></MenuItem>
+                <MenuItem Header="Выбрать файлы" Click="OpenFiles"></MenuItem>
+                <MenuItem Header="Сохранить" Click="Save"></MenuItem>
+                <Separator />
+                <MenuItem Header="Выход в главное меню" Click="ToMenu"></MenuItem>
+                <MenuItem Header="Выход из приложения" Click="Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Настройки (недоступно)" IsEnabled="False"></MenuItem>
+            <MenuItem Header="Справка (недоступно)" IsEnabled="False"></MenuItem>
+        </Menu>
+        <Grid Margin="0 25 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition MinWidth="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListBox Grid.Row ="0" Grid.Column="0" Name="InputFiles" ItemsSource="{Binding Path=Input_files, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="SelectionChanged" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBox Grid.Row ="0" Grid.Column="1" Name="SelectedFile" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Margin="10">
+            </TextBox>
+            <ListBox Grid.Row="0" Grid.Column="2" Name="Result" ItemsSource="{Binding Path=Result, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Grid.Row="1" Grid.Column="1" Content="Извлечь теги" Click="ParseTags" Margin="10 0"/>
+        </Grid>
+    </Grid>
+</Window>
