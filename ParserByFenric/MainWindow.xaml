@@ -31,8 +31,8 @@
 
             <StackPanel Grid.Row="0" Grid.Column="1" Margin="10 5">
                 <Button Content="Извлечь список тегов" Click="OpenWindow_Tags" Margin="0 5" Height="25"/>
+                <Button Content="Извлечь список этапов" Click="OpenWindow_Pipelines" Margin="0 5" Height="25"/>
                 <Button Content="Извлечь список пользователей (недоступно)" Margin="0 5" Height="25" IsEnabled="False"/>
-                <Button Content="Извлечь список воронок (недоступно)" Margin="0 5" Height="25" IsEnabled="False"/>
             </StackPanel>
 
         </Grid>

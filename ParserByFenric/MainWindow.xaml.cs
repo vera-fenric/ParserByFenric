@@ -18,9 +18,18 @@ namespace ParserByFenric
         //обработчик кнопки тегов
         private void OpenWindow_Tags(object sender, RoutedEventArgs e)
         {
-            TagsWindow tagsWindow = new TagsWindow(UI);
-            tagsWindow.Owner = this;
-            tagsWindow.Show();
+            TagsWindow window = new TagsWindow(UI);
+            window.Owner = this;
+            window.Show();
+            this.Hide();
+        }
+
+        //обработчик кнопки статусов
+        private void OpenWindow_Pipelines(object sender, RoutedEventArgs e)
+        {
+            PipelinesWindow window = new PipelinesWindow(UI);
+            window.Owner = this;
+            window.Show();
             this.Hide();
         }
 

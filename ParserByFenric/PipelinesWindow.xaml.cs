@@ -6,29 +6,29 @@ using System.IO;
 
 namespace ParserByFenric
 {
-    public partial class TagsWindow : Window
+    public partial class PipelinesWindow : Window
     {
         //сам парсер
-        private ViewModelTag vm;
+        private ViewModelStatus vm;
 
         //инициализация окна в двух вариантах: если есть интерфейс и если нет
-        public TagsWindow()
+        public PipelinesWindow()
         {
             InitializeComponent();
-            vm = new ViewModelTag(new UIServices());
+            vm = new ViewModelStatus(new UIServices());
             DataContext = vm;
         }
-        public TagsWindow(IUIServices uis)
+        public PipelinesWindow(IUIServices uis)
         {
             InitializeComponent();
-            vm = new ViewModelTag(uis);
+            vm = new ViewModelStatus(uis);
             DataContext = vm;
         }
 
         //обработчик кнопки "Начать заново"
         private void New(object sender, RoutedEventArgs e)
         {
-            vm = new ViewModelTag(new UIServices());
+            vm = new ViewModelStatus(new UIServices());
             DataContext = vm;
         }
 
