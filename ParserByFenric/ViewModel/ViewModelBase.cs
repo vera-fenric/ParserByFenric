@@ -3,11 +3,30 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using Model;
+using Parsers;
 
 namespace ViewModel
 {
+    public enum ParseType
+    {
+        Tag,
+        Status,
+        Pipeline,
+        User
+    }
     //ViewModel для привязки ко View
-    public abstract class ViewModelBase<BaseObject> : INotifyPropertyChanged
+    public abstract class ViewModelRegular
+    {
+        public abstract void OpenFiles();
+        public abstract bool Closing();
+        public abstract void Error();
+        public abstract void Error(string s);
+        public abstract void Error(string s1, string s2);
+        public abstract void SaveResults();
+        public abstract void Parse();
+    }
+
+    public abstract class ViewModelBase<BaseObject> : ViewModelRegular, INotifyPropertyChanged
     {
         protected string firstLine;
         //поля и свойства
@@ -23,8 +42,8 @@ namespace ViewModel
             }
         }
 
-        protected BaseList<string> inputFiles;
-        public BaseList<string> InputFiles
+        protected ObservableList<string> inputFiles;
+        public ObservableList<string> InputFiles
         {
             get => inputFiles;
             set
@@ -34,8 +53,8 @@ namespace ViewModel
             }
         }
 
-        protected BaseList<BaseObject> _resultList;
-        public BaseList<BaseObject> ResultList
+        protected ObservableList<BaseObject> _resultList;
+        public ObservableList<BaseObject> ResultList
         {
             get => _resultList;
             set
@@ -57,13 +76,13 @@ namespace ViewModel
         }
 
         //методы
-        public void OpenFiles()
+        public override void OpenFiles()
         {
             foreach (string s in UI.OpenFileFunc())
                 InputFiles.Add(s);
         }
         
-        public bool Closing()
+        public override bool Closing()
         {
             if (Saved)
                 return false;
@@ -81,19 +100,19 @@ namespace ViewModel
                     return false;
             }
         }
-        public void Error(string s)
+        public override void Error(string s)
         {
             UI.ErrorFunc(s);
         }
-        public void Error()
+        public override void Error()
         {
             UI.ErrorFunc();
         }
-        public void Error(string s1, string s2)
+        public override void Error(string s1, string s2)
         {
             UI.ErrorFunc(s1, s2);
         }
-        public void SaveResults()
+        public override void SaveResults()
         {
             string filename = UI.SaveFileFunc();
             if (filename != null)
@@ -113,6 +132,5 @@ namespace ViewModel
                 }
             }
         }
-        public abstract void Parse();
     }
 }

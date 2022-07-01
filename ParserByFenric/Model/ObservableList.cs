@@ -6,8 +6,16 @@ using System.Collections.Specialized;
 
 namespace Model
 {
+    public enum ObjectType
+    {
+        Tag,
+        Status,
+        Pipeline,
+        User
+    }
     public abstract class BaseObject { }
-    public abstract class RegularList<T>: IEnumerable<T>
+    public abstract class BaseList { }
+    public abstract class RegularList<T>: BaseList, IEnumerable<T>
     {
         private List<T> list;
         public List<T> List
@@ -60,7 +68,7 @@ namespace Model
         }
     }
 
-    public class BaseList<T> : RegularList<T>, INotifyCollectionChanged, INotifyPropertyChanged
+    public class ObservableList<T> : RegularList<T>, INotifyCollectionChanged, INotifyPropertyChanged
     {
 
 
@@ -77,7 +85,7 @@ namespace Model
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(null));
         }
-        public void Add(BaseList<T> list)
+        public void Add(ObservableList<T> list)
         {
             foreach (T item in list)
                 if (!List.Contains(item))

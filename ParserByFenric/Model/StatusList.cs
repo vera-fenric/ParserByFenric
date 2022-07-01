@@ -24,7 +24,7 @@ namespace Model
 
     }
 
-    public class StatusList : BaseList<Status>
+    public class StatusList : ObservableList<Status>
     {
         public static implicit operator StatusList(PipelinesJSON statusjson)
         {

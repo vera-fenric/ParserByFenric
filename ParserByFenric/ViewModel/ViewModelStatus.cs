@@ -11,7 +11,7 @@ namespace ViewModel
         {
             Saved = true;
             UI = svc;
-            InputFiles = new BaseList<string>();
+            InputFiles = new ObservableList<string>();
             ResultList = new StatusList();
             firstLine = "id,name,pipeline_id,color,type";
         }
@@ -22,7 +22,7 @@ namespace ViewModel
                 try
                 {
                     StreamReader sr = new StreamReader(s);
-                    ResultList.Add(StatusParsers.ParseStatusToStatusList(sr));
+                    ResultList.Add(Parser.ParseStatus(sr));
                     sr.Close();
                 }
                 catch (Exception ex)

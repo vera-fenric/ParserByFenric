@@ -5,15 +5,15 @@ using Model;
 
 namespace ViewModel
 {
-    public class ViewModelTag : ViewModelBase<Tag>
+    public class ViewModelPipeline : ViewModelBase<Pipeline>
     {
-        public ViewModelTag(IUIServices svc)
+        public ViewModelPipeline(IUIServices svc)
         {
             Saved = true;
             UI = svc;
             InputFiles = new ObservableList<string>();
-            ResultList = new TagList();
-            firstLine = "id,name,color";
+            ResultList = new PipelineList();
+            firstLine = "id,name,sort,is_main,is_unsorted_on,is_archive";
         }
         public override void Parse()
         {
@@ -22,7 +22,7 @@ namespace ViewModel
                 try
                 {
                     StreamReader sr = new StreamReader(s);
-                    ResultList.Add(Parser.ParseTag(sr));
+                    ResultList.Add(Parser.ParsePipeline(sr));
                     sr.Close();
                 }
                 catch (Exception ex)

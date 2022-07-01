@@ -6,30 +6,55 @@ using System.IO;
 
 namespace ParserByFenric
 {
-    public partial class PipelinesWindow : Window
+    public partial class BaseWindow : Window
     {
-        //сам парсер
-        private ViewModelStatus vm;
+        private ParseType pt;
+        private ViewModelRegular vm;
+        private IUIServices uis;
 
-        //инициализация окна в двух вариантах: если есть интерфейс и если нет
-        public PipelinesWindow()
+        //инициализация окна
+        public BaseWindow(IUIServices uis, ParseType pt)
         {
+            this.pt = pt;
+            this.uis = uis;
             InitializeComponent();
-            vm = new ViewModelStatus(new UIServices());
+            switch (pt)
+            {
+                case ParseType.Tag:
+                    vm = new ViewModelTag(uis);
+                    break;
+                case ParseType.Pipeline:
+                    vm = new ViewModelPipeline(uis);
+                    break;
+                case ParseType.Status:
+                    vm = new ViewModelStatus(uis);
+                    break;
+                case ParseType.User:
+                    throw new NotImplementedException();
+            }
             DataContext = vm;
-        }
-        public PipelinesWindow(IUIServices uis)
-        {
-            InitializeComponent();
-            vm = new ViewModelStatus(uis);
-            DataContext = vm;
+            return;
         }
 
         //обработчик кнопки "Начать заново"
         private void New(object sender, RoutedEventArgs e)
         {
-            vm = new ViewModelStatus(new UIServices());
+            switch (pt)
+            {
+                case ParseType.Tag:
+                    vm = new ViewModelTag(uis);
+                    break;
+                case ParseType.Pipeline:
+                    vm = new ViewModelPipeline(uis);
+                    break;
+                case ParseType.Status:
+                    vm = new ViewModelStatus(uis);
+                    break;
+                case ParseType.User:
+                    throw new NotImplementedException();
+            }
             DataContext = vm;
+            return;
         }
 
         //обработчик кнопки "Выбрать файлы"

@@ -22,7 +22,7 @@ namespace Model
 
     }
 
-    public class TagList: BaseList<Tag>
+    public class TagList: ObservableList<Tag>
     {
         public static implicit operator TagList(TagsJSON tagsjson)
         {

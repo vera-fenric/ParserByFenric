@@ -86,29 +86,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JSONModel\BaseJson.cs" />
     <Compile Include="JSONModel\LinksJson.cs" />
     <Compile Include="JSONModel\PipelinesJson.cs" />
     <Compile Include="JSONModel\TagsJson.cs" />
+    <Compile Include="Model\PipelineList.cs" />
     <Compile Include="Model\StatusList.cs" />
     <Compile Include="Model\ObservableList.cs" />
     <Compile Include="Model\TagList.cs" />
-    <Compile Include="Parsers\StatusParser.cs" />
-    <Compile Include="PipelinesWindow.xaml.cs">
-      <DependentUpon>PipelinesWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UsersWindow.xaml.cs">
-      <DependentUpon>UsersWindow.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Parsers\Parser.cs" />
+    <Compile Include="ViewModel\ViewModelPipeline.cs" />
     <Compile Include="ViewModel\ViewModelStatus.cs" />
     <Compile Include="ViewModel\ViewModelTag.cs" />
     <Compile Include="ViewModel\InverfaceModel.cs" />
-    <Compile Include="Parsers\TagsParser.cs" />
-    <Compile Include="TagsWindow.xaml.cs">
-      <DependentUpon>TagsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="WindowsInterfaces.cs" />
+    <Page Include="BaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,18 +120,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PipelinesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="TagsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UsersWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

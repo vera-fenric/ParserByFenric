@@ -82,7 +82,7 @@ namespace ModelJSON
         [JsonProperty("pipelines")]
         List<PipelineJSON> pipelines { get; set; }
 
-        public List<PipelineJSON> ToPipelineList()
+        public List<PipelineJSON> PipelinesToList()
         {
             return pipelines;
         }
@@ -108,6 +108,10 @@ namespace ModelJSON
         public override List<StatusJSON> ToList()
         {
             return _embedded.ToList();
+        }
+        public List<PipelineJSON> PipelinesToList()
+        {
+            return _embedded.PipelinesToList();
         }
     }
 }
