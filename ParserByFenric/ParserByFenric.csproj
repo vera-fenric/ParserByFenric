@@ -93,6 +93,8 @@
     <Compile Include="JSONModel\LinksJson.cs" />
     <Compile Include="JSONModel\PipelinesJson.cs" />
     <Compile Include="JSONModel\TagsJson.cs" />
+    <Compile Include="JSONModel\UsersJson.cs" />
+    <Compile Include="Model\UserList.cs" />
     <Compile Include="Model\PipelineList.cs" />
     <Compile Include="Model\StatusList.cs" />
     <Compile Include="Model\ObservableList.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="ViewModel\ViewModelTag.cs" />
     <Compile Include="ViewModel\InverfaceModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\ViewModelUser.cs" />
     <Compile Include="WindowsInterfaces.cs" />
     <Page Include="BaseWindow.xaml">
       <SubType>Designer</SubType>

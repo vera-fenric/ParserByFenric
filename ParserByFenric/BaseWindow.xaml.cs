@@ -30,7 +30,8 @@ namespace ParserByFenric
                     vm = new ViewModelStatus(uis);
                     break;
                 case ParseType.User:
-                    throw new NotImplementedException();
+                    vm = new ViewModelUser(uis);
+                    break;
             }
             DataContext = vm;
             return;
@@ -51,7 +52,8 @@ namespace ParserByFenric
                     vm = new ViewModelStatus(uis);
                     break;
                 case ParseType.User:
-                    throw new NotImplementedException();
+                    vm = new ViewModelUser(uis);
+                    break;
             }
             DataContext = vm;
             return;

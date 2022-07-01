@@ -57,5 +57,21 @@ namespace Parsers
         {
             return JsonConvert.DeserializeObject<PipelinesJSON>(sr.ReadToEnd());
         }
+
+        static public List<string> ParseUserToString(StreamReader sr)
+        {
+            List<string> list = new List<string>();
+
+            UserList l = JsonConvert.DeserializeObject<UsersJSON>(sr.ReadToEnd());
+
+            foreach (User s in l)
+                list.Add(s.ToString());
+            return list;
+        }
+
+        static public UserList ParseUser(StreamReader sr)
+        {
+            return JsonConvert.DeserializeObject<UsersJSON>(sr.ReadToEnd());
+        }
     }
 }

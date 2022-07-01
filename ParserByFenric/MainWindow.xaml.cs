@@ -42,6 +42,14 @@ namespace ParserByFenric
             this.Hide();
         }
 
+        private void OpenWindow_Users(object sender, RoutedEventArgs e)
+        {
+            BaseWindow window = new BaseWindow(UI, ParseType.User);
+            window.Owner = this;
+            window.Show();
+            this.Hide();
+        }
+
         //обработчик кнопки выхода
         private void Exit(object sender, RoutedEventArgs e)
         {
